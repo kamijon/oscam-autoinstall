@@ -1,0 +1,6 @@
+[account]
+user = kamran
+pwd = 12345
+group = 1
+cccmaxhops = 2
+cccreshare = 1
