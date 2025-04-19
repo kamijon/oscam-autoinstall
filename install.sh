@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 🚀 Update system
+# 🔄 Update system
 apt update && apt upgrade -y && apt autoremove -y && apt autoclean -y
 
 # 🧰 Install dependencies
@@ -15,9 +15,16 @@ cd oscam
 make config
 make
 
-# 🗂️ Install binary
-cp Distribution/oscam-* /usr/local/bin/oscam
-chmod +x /usr/local/bin/oscam
+# ✅ Find built binary (inside Distribution/)
+binary_path=$(find ./Distribution -type f -name "oscam-*" | head -n 1)
+if [[ -f "$binary_path" ]]; then
+    cp "$binary_path" /usr/local/bin/oscam
+    chmod +x /usr/local/bin/oscam
+    echo "✅ OSCam binary copied to /usr/local/bin/oscam"
+else
+    echo "❌ OSCam binary not found. Build may have failed."
+    exit 1
+fi
 
 # 📁 Create config directory
 mkdir -p /usr/local/etc
@@ -51,7 +58,7 @@ EOF
 # ▶️ Run OSCam
 /usr/local/bin/oscam -b
 
-echo "✅ OSCam installed!"
+echo "\n✅ OSCam installed and running!"
 echo "🌐 Access: http://\$(hostname -I | awk '{print \$1}'):8888"
 echo "👤 Username: root"
 echo "🔑 Password: root"
