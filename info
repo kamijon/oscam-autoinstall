@@ -1,0 +1,2 @@
+apt update && apt upgrade -y && apt autoremove -y && apt autoclean -y
+wget https://github.com/kamijon/oscam-autoinstall/raw/main/oscam_ubuntu22 -O /usr/local/bin/oscam chmod +x /usr/local/bin/oscam
