@@ -1,2 +1,10 @@
 apt update && apt upgrade -y && apt autoremove -y && apt autoclean -y
+###############################
+apt install -y build-essential libpcsclite-dev libusb-1.0-0-dev pcscd git
+cd /usr/src
+git clone https://git.streamboard.tv/common/oscam.git
+cd oscam
+make config
+make
+##############################
 wget https://github.com/kamijon/oscam-autoinstall/raw/main/oscam_ubuntu22 -O /usr/local/bin/oscam chmod +x /usr/local/bin/oscam
